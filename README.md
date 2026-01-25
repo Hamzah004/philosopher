@@ -1,1 +1,6 @@
 # philosopher README file
+
+
+## Resources
+
+
