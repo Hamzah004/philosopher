@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbani-at <hbani-at@student.42amman.com>    +#+  +:+       +#+        */
+/*   By: amufleh <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/16 19:58:47 by hbani-at          #+#    #+#             */
-/*   Updated: 2026/06/16 20:34:30 by hbani-at         ###   ########.fr       */
+/*   Created: 2025/08/09 11:44:14 by amufleh           #+#    #+#             */
+/*   Updated: 2025/08/09 12:05:03 by amufleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "libft.h"
 
-int	input_validation(int argc, char **argv)
+int	ft_isalnum(int c)
 {
-	if (argc < 5 || argc < 6)
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')
+		|| (c >= '0' && c <= '9'))
 		return (1);
-	(void) argv;
 	return (0);
 }
-
-int	main(int argc, char **argv)
+/*int main()
 {
-	if (input_validation(argc, argv))
-	{
-		print_error(ERROR_INVALID_ARGS);
-		return (ERROR_INVALID_ARGS);
-	}
-	return (0);
-}
+	printf("%d",ft_isalnum(90));
+}*/

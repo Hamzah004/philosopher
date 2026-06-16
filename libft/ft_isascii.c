@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbani-at <hbani-at@student.42amman.com>    +#+  +:+       +#+        */
+/*   By: amufleh <amufleh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/16 19:58:47 by hbani-at          #+#    #+#             */
-/*   Updated: 2026/06/16 20:34:30 by hbani-at         ###   ########.fr       */
+/*   Created: 2025/08/09 10:36:57 by amufleh           #+#    #+#             */
+/*   Updated: 2025/08/16 14:17:16 by amufleh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "libft.h"
 
-int	input_validation(int argc, char **argv)
+int	ft_isascii(int c)
 {
-	if (argc < 5 || argc < 6)
+	if (c >= 0 && c <= 127)
 		return (1);
-	(void) argv;
 	return (0);
 }
-
-int	main(int argc, char **argv)
+/*int main()
 {
-	if (input_validation(argc, argv))
-	{
-		print_error(ERROR_INVALID_ARGS);
-		return (ERROR_INVALID_ARGS);
-	}
-	return (0);
-}
+	printf("%d",ft_isascii('w'));
+}*/
