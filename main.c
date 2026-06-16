@@ -12,20 +12,43 @@
 
 #include "philo.h"
 
-int	input_validation(int argc, char **argv)
+int	is_valid_number(char *s)
 {
-	if (argc < 5 || argc < 6)
+	int	i;
+
+	i = 0;
+	if (s[i] == '+' || s[i] == '-')
+		i++;
+	if (!s[i])
 		return (1);
-	(void) argv;
+
+	while (s[i] != '\0')
+	{
+		if (s[i])
+	}
+	return (0);
+}
+
+t_error	input_validation(int argc, char **argv)
+{
+	int	i;
+
+	if (argc < 5 || argc < 6)
+		return (ERROR_INVALID_ARGS);
+	i = 0;
+	while (i < argc)
+	{
+		if (!is_valid_number(argv[i]))
+			return (ERROR_INVALID_ARGS);
+	}
 	return (0);
 }
 
 int	main(int argc, char **argv)
 {
-	if (input_validation(argc, argv))
-	{
-		print_error(ERROR_INVALID_ARGS);
-		return (ERROR_INVALID_ARGS);
-	}
-	return (0);
+	t_error err;
+
+	err = input_validation(argc, argv);
+	print_error(err);
+	return (err);
 }
