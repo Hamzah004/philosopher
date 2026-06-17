@@ -1,20 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amufleh <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: hbani-at <hbani-at@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/09 10:19:20 by amufleh           #+#    #+#             */
-/*   Updated: 2025/08/09 10:22:40 by amufleh          ###   ########.fr       */
+/*   Created: 2026/06/18 00:52:42 by hbani-at          #+#    #+#             */
+/*   Updated: 2026/06/18 01:02:44 by hbani-at         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int	ft_isdigit(int c)
+#include "philo.h"
+int	parse_args(t_data *data, int argc, char **argv)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
+	
 }

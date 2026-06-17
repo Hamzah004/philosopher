@@ -20,20 +20,8 @@ void	print_error(t_error error)
 	ft_putstr_fd("Error\n", 2);
 	if (error == ERROR_INVALID_ARGS)
 		ft_putstr_fd("Invalid number of arguments\n", 2);
-	else if (error == ERROR_FILE_NOT_FOUND)
-		ft_putstr_fd("Map file not found\n", 2);
-	else if (error == ERROR_FILE_EMPTY)
-		ft_putstr_fd("Map file is empty\n", 2);
-	else if (error == ERROR_INVALID_EXTENSION)
-		ft_putstr_fd("Invalid file extension. Must be .ber\n", 2);
-	else if (error == ERROR_MEMORY)
-		ft_putstr_fd("Memory allocation failed\n", 2);
-	else if (error == ERROR_INVALID_MAP)
-		ft_putstr_fd("Invalid map character or missing required elements\n", 2);
-	else if (error == ERROR_MAP_NOT_RECTANGULAR)
-		ft_putstr_fd("Map is not rectangular\n", 2);
-	else if (error == ERROR_MAP_NOT_SURROUNDED)
-		ft_putstr_fd("Map is not surrounded by walls\n", 2);
-	else if (error == ERROR_INVALID_PATH)
-		ft_putstr_fd("The player can't access collectables or the exit\n", 2);
+	if (error == ERROR_INVALID_NUMBER)
+		ft_putstr_fd("Invalid number\n", 2);
+	if (error == ERROR_MEMORY)
+		ft_putstr_fd("Invalid Memory allocation\n", 2);
 }

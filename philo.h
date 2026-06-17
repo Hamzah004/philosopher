@@ -1,37 +1,62 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hbani-at <hbani-at@student.42amman.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/17 21:06:30 by hbani-at          #+#    #+#             */
+/*   Updated: 2026/06/18 01:13:11 by hbani-at         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PHILO_H
 # define PHILO_H
 
 # include "libft/libft.h"
-#include "pthread.h"
+# include "pthread.h"
+# include <bits/pthreadtypes.h>
 
 typedef enum e_error
 {
 	ERROR_SUCCESS = 0,
 	ERROR_INVALID_ARGS = 1,
-	ERROR_FILE_NOT_FOUND = 2,
-	ERROR_FILE_EMPTY = 3,
-	ERROR_INVALID_EXTENSION = 4,
-	ERROR_MEMORY = 5,
-	ERROR_INVALID_MAP = 6,
-	ERROR_MAP_NOT_RECTANGULAR = 7,
-	ERROR_MAP_NOT_SURROUNDED = 8,
-	ERROR_INVALID_PATH = 9,
-	ERROR_INVALID_XPM_FORMAT = 10,
-	CONNECTION_ERROR = 11,
-	WINDOW_ERROR = 12
-}	t_error;
+	ERROR_INVALID_NUMBER = 2,
+	ERROR_MEMORY = 3
+}					t_error;
 
 typedef struct s_fork
 {
-	int	id;
-	pthread_mutex_t fork;
-} t_fork ;
+	int				id;
+	pthread_mutex_t	fork;
+}					t_fork;
 
 typedef struct s_philo
 {
-	
-} t_philo;
+	int				id;
+	long			meal_count;
+	long long		last_meal;
+	pthread_mutex_t	meal_mutex;
+	t_fork			*left_fork;
+	t_fork			*right_fork;
+	pthread_t		thread_id;
+}					t_philo;
 
-void	print_error(t_error error);
+typedef struct s_data
+{
+	int				philo_count;
+	long long		ttd;
+	long long		tte;
+	long long		tts;
+	int				must_eat_count;
+	long long		start_time;
+	int				sim_running;
+	pthread_mutex_t	sim_mutex;
+	pthread_mutex_t	print_mutex;
+	t_fork			*forks;
+	t_philo			*philos;
+}					t_data;
+
+void				print_error(t_error error);
 
 #endif
