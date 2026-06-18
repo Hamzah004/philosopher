@@ -6,7 +6,7 @@
 /*   By: hbani-at <hbani-at@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 21:06:30 by hbani-at          #+#    #+#             */
-/*   Updated: 2026/06/18 01:13:11 by hbani-at         ###   ########.fr       */
+/*   Updated: 2026/06/18 03:03:39 by hbani-at         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ typedef struct s_philo
 typedef struct s_data
 {
 	int				philo_count;
-	long long		ttd;
-	long long		tte;
-	long long		tts;
-	int				must_eat_count;
+	long long		time_to_die;
+	long long		time_to_eat;
+	long long		time_to_sleep;
+	int				must_eat;
 	long long		start_time;
 	int				sim_running;
 	pthread_mutex_t	sim_mutex;

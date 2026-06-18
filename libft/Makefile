@@ -6,7 +6,7 @@
 #    By: amufleh <amufleh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/13 11:18:27 by amufleh           #+#    #+#              #
-#    Updated: 2026/04/05 09:25:08 by amufleh          ###   ########.fr        #
+#    Updated: 2026/06/18 01:55:11 by hbani-at         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ SRC =	ft_isascii.c ft_memcpy.c ft_putstr_fd.c ft_strlcat.c ft_strrchr.c \
 	ft_calloc.c ft_itoa.c ft_putchar_fd.c ft_strdup.c ft_strmapi.c ft_tolower.c \
 	ft_isalnum.c ft_memchr.c ft_putendl_fd.c ft_striteri.c ft_strncmp.c \
 	ft_toupper.c ft_strndup.c ft_isalpha.c ft_memcmp.c ft_putnbr_fd.c \
-	ft_strjoin.c ft_strnstr.c ft_split.c ft_strcmp.c
+	ft_strjoin.c ft_strnstr.c ft_split.c ft_strcmp.c ft_atol.c
 
 BONUS =	ft_lstadd_front_bonus.c ft_lstadd_back_bonus.c ft_lstlast_bonus.c \
 	ft_lstnew_bonus.c ft_lstsize_bonus.c ft_lstdelone_bonus.c \
