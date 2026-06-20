@@ -6,7 +6,7 @@
 /*   By: hbani-at <hbani-at@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 10:00:00 by hbani-at          #+#    #+#             */
-/*   Updated: 2025/12/29 20:06:48 by hbani-at         ###   ########.fr       */
+/*   Updated: 2026/06/20 00:39:03 by hbani-at         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,6 @@ void	print_error(t_error error)
 		ft_putstr_fd("Invalid number\n", 2);
 	if (error == ERROR_MEMORY)
 		ft_putstr_fd("Invalid Memory allocation\n", 2);
+	if (error == MUTEX_INIT_ERROR)
+		ft_putstr_fd("Mutex Init Error\n", 2);
 }

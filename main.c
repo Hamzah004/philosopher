@@ -6,7 +6,7 @@
 /*   By: hbani-at <hbani-at@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 19:58:47 by hbani-at          #+#    #+#             */
-/*   Updated: 2026/06/18 03:03:41 by hbani-at         ###   ########.fr       */
+/*   Updated: 2026/06/20 00:38:58 by hbani-at         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,20 @@ t_error	input_validation(int argc, char **argv)
 
 int	main(int argc, char **argv)
 {
+	t_data	data;
 	t_error	err;
 
 	err = input_validation(argc, argv);
-	print_error(err);
+	if (err != ERROR_SUCCESS)
+	{
+		print_error(err);
+		return (err);
+	}
+	err = init_data(&data, argc, argv);
+	if (err != ERROR_SUCCESS)
+	{
+		print_error(err);
+		return (err);
+	}
 	return (err);
 }

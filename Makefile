@@ -6,7 +6,7 @@
 #    By: hbani-at <hbani-at@student.42amman.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/16 19:52:29 by hbani-at          #+#    #+#              #
-#    Updated: 2026/06/18 01:54:53 by hbani-at         ###   ########.fr        #
+#    Updated: 2026/06/20 01:36:17 by hbani-at         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,10 @@ CFLAGS = -g3 -Wall -Werror -Wextra
 
 NAME = philo
 SRC = 	main.c \
-	error.c
+	error.c \
+	init.c \
+	time.c \
+	print.c
 
 OBJS = $(SRC:.c=.o)
 
@@ -54,5 +57,8 @@ fclean: clean
 	@make --no-print-directory -C $(LIBFT_DIR) fclean
 
 re: fclean all
+
+gdb: $(NAME)
+	gdb -tui ./$(NAME)
 
 .PHONY: all clean fclean re
