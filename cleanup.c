@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.c                                            :+:      :+:    :+:   */
+/*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbani-at <hbani-at@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/20 01:29:37 by hbani-at          #+#    #+#             */
-/*   Updated: 2026/06/20 01:33:26 by hbani-at         ###   ########.fr       */
+/*   Created: 2026/06/21 03:10:19 by hbani-at          #+#    #+#             */
+/*   Updated: 2026/06/21 04:00:00 by hbani-at         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-#include <pthread.h>
 
-void	print_state(t_data *data, int id, char *message)
+void	cleanup(t_data *data)
 {
-	pthread_mutex_lock(&data->print_mutex);
-	pthread_mutex_lock(&data->sim_mutex);
-	if (data->sim_running)
-		printf("%lld %d %s\n", get_time_ms() - data->start_time, id, message);
-	pthread_mutex_unlock(&data->sim_mutex);
-	pthread_mutex_unlock(&data->print_mutex);
+	int	i;
+
+	i = 0;
+	while (i < data->philo_count)
+	{
+		pthread_join(data->philos[i].thread_id, NULL);
+		i++;
+	}
+	i = 0;
+	while (i < data->philo_count)
+	{
+		pthread_mutex_destroy(&data->forks[i].fork);
+		pthread_mutex_destroy(&data->philos[i].meal_mutex);
+		i++;
+	}
+	pthread_mutex_destroy(&data->print_mutex);
+	pthread_mutex_destroy(&data->sim_mutex);
+	free(data->forks);
+	free(data->philos);
 }

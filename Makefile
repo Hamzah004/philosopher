@@ -6,7 +6,7 @@
 #    By: hbani-at <hbani-at@student.42amman.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/16 19:52:29 by hbani-at          #+#    #+#              #
-#    Updated: 2026/06/20 01:36:17 by hbani-at         ###   ########.fr        #
+#    Updated: 2026/06/21 03:45:33 by hbani-at         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,10 @@ SRC = 	main.c \
 	error.c \
 	init.c \
 	time.c \
-	print.c
+	print.c \
+	routine.c \
+	monitoring.c \
+	cleanup.c
 
 OBJS = $(SRC:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: hbani-at <hbani-at@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 00:52:42 by hbani-at          #+#    #+#             */
-/*   Updated: 2026/06/20 00:51:08 by hbani-at         ###   ########.fr       */
+/*   Updated: 2026/06/21 03:53:38 by hbani-at         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ static t_error	init_philos(t_data *data)
 t_error	init_data(t_data *data, int argc, char **argv)
 {
 	parse_args(data, argc, argv);
+	if (data->philo_count <= 0)
+		return (ERROR_INVALID_NUMBER);
 	data->forks = malloc(sizeof(t_fork) * data->philo_count);
 	if (!data->forks)
 		return (ERROR_MEMORY);

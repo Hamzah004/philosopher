@@ -6,12 +6,13 @@
 /*   By: hbani-at <hbani-at@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 19:58:47 by hbani-at          #+#    #+#             */
-/*   Updated: 2026/06/20 00:38:58 by hbani-at         ###   ########.fr       */
+/*   Updated: 2026/06/21 03:53:36 by hbani-at         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "philo.h"
+#include <pthread.h>
 
 int	is_valid_number(char *s)
 {
@@ -40,10 +41,25 @@ t_error	input_validation(int argc, char **argv)
 	i = 0;
 	while (++i < argc)
 	{
-		if (!is_valid_number(argv[i]))
+		if (is_valid_number(argv[i]))
 			return (ERROR_INVALID_NUMBER);
 	}
 	return (ERROR_SUCCESS);
+}
+
+static void	start_sim(t_data *data)
+{
+	int		i;
+
+	i = 0;
+	while (i < data->philo_count)
+	{
+		pthread_create(&data->philos[i].thread_id, NULL, routine,
+			&data->philos[i]);
+		i++;
+	}
+	monitoring(data);
+	cleanup(data);
 }
 
 int	main(int argc, char **argv)
@@ -63,5 +79,6 @@ int	main(int argc, char **argv)
 		print_error(err);
 		return (err);
 	}
+	start_sim(&data);
 	return (err);
 }

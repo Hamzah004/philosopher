@@ -6,7 +6,7 @@
 /*   By: hbani-at <hbani-at@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 21:06:30 by hbani-at          #+#    #+#             */
-/*   Updated: 2026/06/20 01:34:34 by hbani-at         ###   ########.fr       */
+/*   Updated: 2026/06/21 03:53:29 by hbani-at         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,16 @@ void				print_error(t_error error);
 t_error				init_data(t_data *data, int argc, char **argv);
 
 // time.c
-long long	get_time_ms(void);
-long long	timestamp(t_data *data);
-void	better_usleep(long long ms);
+long long			get_time_ms(void);
+long long			timestamp(t_data *data);
+void				better_usleep(long long ms);
 
 // print.c
-void	print_state(t_data *data, int id, char *message);
+void				print_state(t_data *data, int id, char *message);
+
+// routine.c
+void				*routine(void *s);
+void				cleanup(t_data *data);
+void				monitoring(t_data *data);
 
 #endif
