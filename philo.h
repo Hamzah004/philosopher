@@ -6,7 +6,7 @@
 /*   By: hbani-at <hbani-at@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 21:06:30 by hbani-at          #+#    #+#             */
-/*   Updated: 2026/06/21 17:52:30 by hbani-at         ###   ########.fr       */
+/*   Updated: 2026/06/21 18:16:00 by hbani-at         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,19 +61,13 @@ typedef struct s_data
 
 void				print_error(t_error error);
 t_error				init_data(t_data *data, int argc, char **argv);
-
-// time.c
 long long			get_time_ms(void);
 long long			timestamp(t_data *data);
 void				better_usleep(long long ms, t_data *data);
-
-// print.c
 void				print_state(t_data *data, int id, char *message);
-
-// routine.c
 void				*routine(void *s);
 void				cleanup(t_data *data);
 void				monitoring(t_data *data);
-int	sim_stop(t_data *data);
+int					sim_stop(t_data *data);
 
 #endif

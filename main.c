@@ -49,7 +49,7 @@ t_error	input_validation(int argc, char **argv)
 
 static void	start_sim(t_data *data)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (i < data->philo_count)
