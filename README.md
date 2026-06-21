@@ -79,11 +79,14 @@ Actions:
 
 ## Resources
 
-### Classic References
+- **Butenhof, D. R. (1997).** *Programming with POSIX® Threads.* Addison-Wesley. — The definitive guide to POSIX threads programming, covering thread management, synchronization, and real-world patterns.
 
-- **Dijkstra, E. W. (1971).** *Hierarchical ordering of sequential processes.* Acta Informatica 1, 115–138. — The original paper introducing the Dining Philosophers problem.
-- **Tanenbaum, A. S. & Bos, H. (2015).** *Modern Operating Systems* (4th ed.). Pearson. — Chapter 2 (Processes and Threads) covers concurrency, deadlock, and semaphores.
-- **IEEE/ISO/IEC 9945:2008.** *POSIX.1-2008 Specification* — Official specification for `pthreads`, mutexes, and system interfaces.
+### Online Articles & Tutorials
+
+- [Breaking Down Serialization: How Data Travels Between Worlds](https://medium.com/@muhammadalikhan0003/breaking-down-serialization-how-code-turns-memory-into-meaning-0d8db03863f9)
+- [Kernel task_struct](https://alex-xjk.github.io/post/taskstruct/)
+- [What Is a Thread in an Operating System?](https://medium.com/@no_man/what-is-a-thread-in-an-operating-system-88f31c92bd91)
+- [What is the difference between concurrency and parallelism?](https://stackoverflow.com/questions/1050222/what-is-the-difference-between-concurrency-and-parallelism)
 
 ### Manual Pages (man)
 
