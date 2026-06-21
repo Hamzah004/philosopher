@@ -106,35 +106,9 @@ Actions:
 - `man printf` — formatted output conversion
 - `man write` — write to a file descriptor (used internally by `ft_putstr_fd`)
 
-#### libft (custom C library)
-- `man atoi` / `man atol` — string to integer conversion (`ft_atoi`, `ft_atol`)
-- `man isdigit` — character classification (`ft_isdigit`)
-
 ### AI Usage
 
-AI (Claude) was used during the development of this project for the following tasks:
-
-- **Code review and debugging** — identifying data-race scenarios and suggesting correct mutex placement.
-- **Optimization advice** — suggesting the spin-loop `better_usleep` approach over naive `usleep` for more accurate timing.
-- **README generation** — drafting this documentation.
-
-All logic, architecture decisions, and final implementation remain the original work of the author.
-
----
-
-## Technical Choices
-
-### Spin-loop vs `usleep` for sub-millisecond delays
-
-The custom `better_usleep()` function busy-waits by polling `gettimeofday()` in a tight loop. While this consumes CPU, it provides **deterministic microsecond-level accuracy**, which is critical for a correct simulation (especially when `time_to_eat` or `time_to_sleep` is small). The standard `usleep()` can oversleep by several milliseconds due to kernel scheduling granularity.
-
-### Even-odd fork ordering (deadlock prevention)
-
-By reversing the fork-acquisition order for even-numbered philosophers, the circular wait condition of **Coffman's necessary conditions for deadlock** is broken. This prevents the cyclic dependency where every philosopher holds one fork and waits for the other.
-
-### Mutex-protected print
-
-All state messages are serialised through a single `print_mutex`, ensuring output lines are never interleaved. The running status is double-checked before printing to avoid printing after a death has been declared.
+AI was used during the development of this project for code review (identifying data-race scenarios and suggesting correct mutex placement) and optimization advice. All logic, architecture decisions, and final implementation remain the original work of the author.
 
 ---
 
