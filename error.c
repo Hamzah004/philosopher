@@ -6,11 +6,10 @@
 /*   By: hbani-at <hbani-at@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 10:00:00 by hbani-at          #+#    #+#             */
-/*   Updated: 2026/06/20 00:39:03 by hbani-at         ###   ########.fr       */
+/*   Updated: 2026/06/21 18:38:05 by hbani-at         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "philo.h"
 
 void	print_error(t_error error)

@@ -6,11 +6,10 @@
 /*   By: hbani-at <hbani-at@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 00:52:42 by hbani-at          #+#    #+#             */
-/*   Updated: 2026/06/21 03:53:38 by hbani-at         ###   ########.fr       */
+/*   Updated: 2026/06/21 18:38:11 by hbani-at         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "philo.h"
 #include <pthread.h>
 #include <sys/time.h>

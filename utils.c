@@ -1,16 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amufleh <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: hbani-at <hbani-at@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/10 14:48:32 by amufleh           #+#    #+#             */
-/*   Updated: 2025/08/16 12:11:38 by amufleh          ###   ########.fr       */
+/*   Created: 2026/06/21 18:30:02 by hbani-at          #+#    #+#             */
+/*   Updated: 2026/06/21 18:37:37 by hbani-at         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "philo.h"
+
+long	ft_atol(const char *nptr)
+{
+	int		i;
+	int		sign;
+	long	number;
+
+	number = 0;
+	i = 0;
+	sign = 1;
+	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
+		i++;
+	if (nptr[i] == '+' || nptr[i] == '-')
+	{
+		if (nptr[i] == '-')
+			sign *= -1;
+		i++;
+	}
+	while (ft_isdigit(nptr[i]))
+	{
+		number = number * 10 + (nptr[i] - '0');
+		i++;
+	}
+	return (number * sign);
+}
 
 int	ft_atoi(const char *nptr)
 {
@@ -36,9 +61,24 @@ int	ft_atoi(const char *nptr)
 	}
 	return (num * si);
 }
-/*int main()
+
+int	ft_isdigit(int c)
 {
-	char *str = "    -1 234567";
-	printf("%d\n",ft_atoi(str));
-	printf("%d",atoi(str));
-}*/
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
+}
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	int	i;
+
+	if (!s)
+		return ;
+	i = 0;
+	while (s[i])
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
+}

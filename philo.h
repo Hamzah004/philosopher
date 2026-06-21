@@ -3,19 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbani-at <hbani-at@student.42amman.com>    +#+  +:+       +#+        */
+/*   By: hbani-at <hbani-at@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 21:06:30 by hbani-at          #+#    #+#             */
-/*   Updated: 2026/06/21 18:16:00 by hbani-at         ###   ########.fr       */
+/*   Updated: 2026/06/21 18:38:59 by hbani-at         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
-# include "libft/libft.h"
 # include "pthread.h"
 # include <bits/pthreadtypes.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
 
 typedef enum e_error
 {
@@ -69,5 +71,9 @@ void				*routine(void *s);
 void				cleanup(t_data *data);
 void				monitoring(t_data *data);
 int					sim_stop(t_data *data);
+long	ft_atol(const char *nptr);
+int	ft_atoi(const char *nptr);
+int	ft_isdigit(int c);
+void	ft_putstr_fd(char *s, int fd);
 
 #endif

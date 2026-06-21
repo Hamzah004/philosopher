@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbani-at <hbani-at@student.42amman.com>    +#+  +:+       +#+        */
+/*   By: hbani-at <hbani-at@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 19:58:47 by hbani-at          #+#    #+#             */
-/*   Updated: 2026/06/21 03:53:36 by hbani-at         ###   ########.fr       */
+/*   Updated: 2026/06/21 18:37:42 by hbani-at         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "philo.h"
 #include <pthread.h>
 
