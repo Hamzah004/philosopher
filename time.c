@@ -6,7 +6,7 @@
 /*   By: hbani-at <hbani-at@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/20 00:36:25 by hbani-at          #+#    #+#             */
-/*   Updated: 2026/06/21 03:53:37 by hbani-at         ###   ########.fr       */
+/*   Updated: 2026/06/21 17:55:20 by hbani-at         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,15 @@ long long	timestamp(t_data *data)
 	return (get_time_ms() - data->start_time);
 }
 
-void	better_usleep(long long time_to_eat)
+void	better_usleep(long long ms, t_data *data)
 {
 	long long	start;
 
 	start = get_time_ms();
-	while (get_time_ms() < start + time_to_eat)
-		;
+	while (get_time_ms() < start + ms)
+	{
+		if (sim_stop(data))
+			break ;
+		usleep(500);
+	}
 }

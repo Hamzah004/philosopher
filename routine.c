@@ -6,14 +6,14 @@
 /*   By: hbani-at <hbani-at@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/20 01:37:23 by hbani-at          #+#    #+#             */
-/*   Updated: 2026/06/21 03:18:52 by hbani-at         ###   ########.fr       */
+/*   Updated: 2026/06/21 17:53:28 by hbani-at         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 #include <pthread.h>
 
-static int	sim_stop(t_data *data)
+int	sim_stop(t_data *data)
 {
 	int	stopped;
 
@@ -50,7 +50,7 @@ static void	eating(t_philo *philo)
 	philo->meal_count++;
 	pthread_mutex_unlock(&philo->meal_mutex);
 	print_state(data, philo->id, "is eating");
-	better_usleep(data->time_to_eat);
+	better_usleep(data->time_to_eat, data);
 }
 
 void	handle_single_philo(t_philo *philo)
@@ -65,7 +65,7 @@ void	handle_single_philo(t_philo *philo)
 		return ;
 	}
 	if (philo->id % 2 == 0)
-		better_usleep(1);
+		better_usleep(1, philo->data);
 }
 
 void	*routine(void *s)
@@ -84,7 +84,8 @@ void	*routine(void *s)
 		pthread_mutex_unlock(&philo->right_fork->fork);
 		pthread_mutex_unlock(&philo->left_fork->fork);
 		print_state(data, philo->id, "is sleeping");
-		better_usleep(data->time_to_sleep);
+		better_usleep(data->time_to_sleep, data);
+		usleep(500);
 	}
 	return (NULL);
 }
