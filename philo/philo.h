@@ -15,9 +15,9 @@
 
 # include "pthread.h"
 # include <bits/pthreadtypes.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 typedef enum e_error
 {
@@ -71,9 +71,9 @@ void				*routine(void *s);
 void				cleanup(t_data *data);
 void				monitoring(t_data *data);
 int					sim_stop(t_data *data);
-long	ft_atol(const char *nptr);
-int	ft_atoi(const char *nptr);
-int	ft_isdigit(int c);
-void	ft_putstr_fd(char *s, int fd);
+long long			ft_atol(const char *nptr);
+int					ft_atoi(const char *nptr);
+int					ft_isdigit(int c);
+void				ft_putstr_fd(char *s, int fd);
 
 #endif

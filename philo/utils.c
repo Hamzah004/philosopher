@@ -12,11 +12,11 @@
 
 #include "philo.h"
 
-long	ft_atol(const char *nptr)
+long long	ft_atol(const char *nptr)
 {
 	int		i;
 	int		sign;
-	long	number;
+	long long	number;
 
 	number = 0;
 	i = 0;

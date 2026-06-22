@@ -66,7 +66,10 @@ static t_error	init_philos(t_data *data)
 t_error	init_data(t_data *data, int argc, char **argv)
 {
 	parse_args(data, argc, argv);
-	if (data->philo_count <= 0)
+	if (data->philo_count <= 0 || data->time_to_die <= 0
+		|| data->time_to_eat <= 0 || data->time_to_sleep <= 0)
+		return (ERROR_INVALID_NUMBER);
+	if (argc == 6 && data->must_eat <= 0)
 		return (ERROR_INVALID_NUMBER);
 	data->forks = malloc(sizeof(t_fork) * data->philo_count);
 	if (!data->forks)

@@ -13,34 +13,44 @@
 #include "philo.h"
 #include <pthread.h>
 
-int	is_valid_number(char *s)
+static int	is_valid_number(char *s, int max_digits)
 {
 	int	i;
+	int	digit_len;
 
 	i = 0;
-	if (s[i] == '+' || s[i] == '-')
+	if (s[i] == '+')
 		i++;
 	if (!s[i])
 		return (1);
-	while (s[i] != '\0')
+	digit_len = 0;
+	while (s[i])
 	{
 		if (!ft_isdigit(s[i]))
 			return (1);
 		i++;
+		digit_len++;
 	}
+	if (digit_len > max_digits)
+		return (1);
 	return (0);
 }
 
 t_error	input_validation(int argc, char **argv)
 {
 	int	i;
+	int	max_digits;
 
 	if (argc < 5 || argc > 6)
 		return (ERROR_INVALID_ARGS);
 	i = 0;
 	while (++i < argc)
 	{
-		if (is_valid_number(argv[i]))
+		if (i == 2 || i == 3 || i == 4)
+			max_digits = 19;
+		else
+			max_digits = 10;
+		if (is_valid_number(argv[i], max_digits))
 			return (ERROR_INVALID_NUMBER);
 	}
 	return (ERROR_SUCCESS);

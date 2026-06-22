@@ -83,9 +83,12 @@ Actions:
 
 ### Online Articles & Tutorials
 
+- [Dining philosophers problem](https://en.wikipedia.org/wiki/Dining_philosophers_problem)
 - [Kernel task_struct](https://alex-xjk.github.io/post/taskstruct/)
 - [What Is a Thread in an Operating System?](https://medium.com/@no_man/what-is-a-thread-in-an-operating-system-88f31c92bd91)
 - [What is the difference between concurrency and parallelism?](https://stackoverflow.com/questions/1050222/what-is-the-difference-between-concurrency-and-parallelism)
+- [Threads, Mutexes and Concurrent Programming in C](https://www.codequoi.com/en/threads-mutexes-and-concurrent-programming-in-c/)
+- [Race conditions vs Deadlocks vs Resource starvation](https://medium.com/@qingedaig/race-conditions-vs-deadlocks-vs-resource-starvation-32e26b039cc2)
 
 ### Manual Pages (man)
 
