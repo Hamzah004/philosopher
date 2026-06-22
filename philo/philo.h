@@ -25,7 +25,8 @@ typedef enum e_error
 	ERROR_INVALID_ARGS = 1,
 	ERROR_INVALID_NUMBER = 2,
 	ERROR_MEMORY = 3,
-	MUTEX_INIT_ERROR = 4
+	MUTEX_INIT_ERROR = 4,
+	PTHREAD_CREATE_ERROR = 5
 }					t_error;
 
 typedef struct s_fork

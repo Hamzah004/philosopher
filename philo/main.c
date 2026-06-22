@@ -56,19 +56,21 @@ t_error	input_validation(int argc, char **argv)
 	return (ERROR_SUCCESS);
 }
 
-static void	start_sim(t_data *data)
+static t_error	start_sim(t_data *data)
 {
 	int	i;
 
 	i = 0;
 	while (i < data->philo_count)
 	{
-		pthread_create(&data->philos[i].thread_id, NULL, routine,
-			&data->philos[i]);
+		if (pthread_create(&data->philos[i].thread_id, NULL, routine,
+				&data->philos[i]))
+			return (PTHREAD_CREATE_ERROR);
 		i++;
 	}
 	monitoring(data);
 	cleanup(data);
+	return (ERROR_SUCCESS);
 }
 
 int	main(int argc, char **argv)

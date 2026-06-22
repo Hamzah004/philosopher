@@ -25,4 +25,6 @@ void	print_error(t_error error)
 		ft_putstr_fd("Invalid Memory allocation\n", 2);
 	if (error == MUTEX_INIT_ERROR)
 		ft_putstr_fd("Mutex Init Error\n", 2);
+	if (error == PTHREAD_CREATE_ERROR)
+		ft_putstr_fd("Pthread Create Error\n", 2);
 }
