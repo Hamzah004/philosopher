@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "philo.h"
-#include <pthread.h>
 
 void	print_state(t_data *data, int id, char *message)
 {

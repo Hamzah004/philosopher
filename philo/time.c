@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "philo.h"
-#include <sys/time.h>
 
 long long	get_time_ms(void)
 {

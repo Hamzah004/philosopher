@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "philo.h"
-#include <pthread.h>
 
 static void	print_death(t_data *data, int i)
 {

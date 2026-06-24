@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "philo.h"
-#include <pthread.h>
-#include <sys/time.h>
 
 static void	parse_args(t_data *data, int argc, char **argv)
 {
