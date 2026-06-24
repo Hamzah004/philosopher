@@ -11,45 +11,36 @@
 /* ************************************************************************** */
 
 #include "philo.h"
+#include <pthread.h>
 
-static int	is_valid_number(char *s, int max_digits)
+static int	is_valid_number(char *s)
 {
 	int	i;
-	int	digit_len;
 
 	i = 0;
 	if (s[i] == '+')
 		i++;
 	if (!s[i])
 		return (1);
-	digit_len = 0;
 	while (s[i])
 	{
 		if (!ft_isdigit(s[i]))
 			return (1);
 		i++;
-		digit_len++;
 	}
-	if (digit_len > max_digits)
-		return (1);
 	return (0);
 }
 
 t_error	input_validation(int argc, char **argv)
 {
 	int	i;
-	int	max_digits;
 
 	if (argc < 5 || argc > 6)
 		return (ERROR_INVALID_ARGS);
 	i = 0;
 	while (++i < argc)
 	{
-		if (i == 2 || i == 3 || i == 4)
-			max_digits = 19;
-		else
-			max_digits = 10;
-		if (is_valid_number(argv[i], max_digits))
+		if (is_valid_number(argv[i]))
 			return (ERROR_INVALID_NUMBER);
 	}
 	return (ERROR_SUCCESS);
@@ -64,9 +55,17 @@ static t_error	start_sim(t_data *data)
 	{
 		if (pthread_create(&data->philos[i].thread_id, NULL, routine,
 				&data->philos[i]))
+		{
+			data->threads_created = i;
+			pthread_mutex_lock(&data->sim_mutex);
+			data->sim_running = 0;
+			pthread_mutex_unlock(&data->sim_mutex);
+			cleanup(data);
 			return (PTHREAD_CREATE_ERROR);
+		}
 		i++;
 	}
+	data->threads_created = i;
 	monitoring(data);
 	cleanup(data);
 	return (ERROR_SUCCESS);

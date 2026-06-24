@@ -20,11 +20,6 @@ long long	get_time_ms(void)
 	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }
 
-long long	timestamp(t_data *data)
-{
-	return (get_time_ms() - data->start_time);
-}
-
 void	better_usleep(long long ms, t_data *data)
 {
 	long long	start;

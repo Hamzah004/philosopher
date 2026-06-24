@@ -14,6 +14,7 @@
 # define PHILO_H
 
 # include "pthread.h"
+# include <limits.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <sys/time.h>
@@ -43,11 +44,14 @@ typedef struct s_philo
 
 typedef struct s_data
 {
-	int				philo_count;
+	long long		philo_count;
 	long long		time_to_die;
 	long long		time_to_eat;
 	long long		time_to_sleep;
-	int				must_eat;
+	long long		must_eat;
+	int				forks_inited;
+	int				philos_inited;
+	int				threads_created;
 	long long		start_time;
 	int				sim_running;
 	pthread_mutex_t	sim_mutex;
@@ -59,7 +63,6 @@ typedef struct s_data
 void				print_error(t_error error);
 t_error				init_data(t_data *data, int argc, char **argv);
 long long			get_time_ms(void);
-long long			timestamp(t_data *data);
 void				better_usleep(long long ms, t_data *data);
 void				print_state(t_data *data, int id, char *message);
 void				*routine(void *s);
@@ -67,7 +70,6 @@ void				cleanup(t_data *data);
 void				monitoring(t_data *data);
 int					sim_stop(t_data *data);
 long long			ft_atol(const char *nptr);
-int					ft_atoi(const char *nptr);
 int					ft_isdigit(int c);
 void				ft_putstr_fd(char *s, int fd);
 

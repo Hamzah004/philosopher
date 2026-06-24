@@ -17,18 +17,14 @@ void	cleanup(t_data *data)
 	int	i;
 
 	i = 0;
-	while (i < data->philo_count)
-	{
-		pthread_join(data->philos[i].thread_id, NULL);
-		i++;
-	}
+	while (i < data->threads_created)
+		pthread_join(data->philos[i++].thread_id, NULL);
 	i = 0;
-	while (i < data->philo_count)
-	{
-		pthread_mutex_destroy(&data->forks[i]);
-		pthread_mutex_destroy(&data->philos[i].meal_mutex);
-		i++;
-	}
+	while (i < data->forks_inited)
+		pthread_mutex_destroy(&data->forks[i++]);
+	i = 0;
+	while (i < data->philos_inited)
+		pthread_mutex_destroy(&data->philos[i++].meal_mutex);
 	pthread_mutex_destroy(&data->print_mutex);
 	pthread_mutex_destroy(&data->sim_mutex);
 	free(data->forks);

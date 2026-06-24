@@ -37,31 +37,6 @@ long long	ft_atol(const char *nptr)
 	return (number * sign);
 }
 
-int	ft_atoi(const char *nptr)
-{
-	int	i;
-	int	si;
-	int	num;
-
-	i = 0;
-	si = 1;
-	num = 0;
-	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
-		i++;
-	if (nptr[i] == '-' || nptr[i] == '+')
-	{
-		if (nptr[i] == '-')
-			si = -1;
-		i++;
-	}
-	while (nptr[i] >= '0' && nptr[i] <= '9')
-	{
-		num = num * 10 + (nptr[i] - '0');
-		i++;
-	}
-	return (num * si);
-}
-
 int	ft_isdigit(int c)
 {
 	if (c >= '0' && c <= '9')
