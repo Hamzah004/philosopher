@@ -28,14 +28,6 @@ static int	check_death(t_data *data, int *i)
 	pthread_mutex_lock(&data->philos[*i].meal_mutex);
 	if (get_time_ms() - data->philos[*i].last_meal > data->time_to_die)
 	{
-		pthread_mutex_lock(&data->sim_mutex);
-		if (!data->sim_running)
-		{
-			pthread_mutex_unlock(&data->sim_mutex);
-			pthread_mutex_unlock(&data->philos[*i].meal_mutex);
-			return (1);
-		}
-		pthread_mutex_unlock(&data->sim_mutex);
 		print_death(data, *i);
 		pthread_mutex_unlock(&data->philos[*i].meal_mutex);
 		return (1);
