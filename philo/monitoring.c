@@ -13,28 +13,15 @@
 #include "philo.h"
 #include <pthread.h>
 
-static int	check_death(t_data *data, int *i);
-static void	check_logic(t_data *data, int *j);
-static void	print_death(t_data *data, int i);
-static int	check_all_full(t_data *data);
-
-void	monitoring(t_data *data)
+static void	print_death(t_data *data, int i)
 {
-	int	i;
-
-	while (1)
-	{
-		i = 0;
-		while (i < data->philo_count)
-		{
-			if (check_death(data, &i))
-				return ;
-			i++;
-		}
-		if (check_all_full(data))
-			return ;
-		usleep(1000);
-	}
+	pthread_mutex_lock(&data->print_mutex);
+	printf("%lld %d died\n", get_time_ms() - data->start_time,
+		data->philos[i].id);
+	pthread_mutex_lock(&data->sim_mutex);
+	data->sim_running = 0;
+	pthread_mutex_unlock(&data->sim_mutex);
+	pthread_mutex_unlock(&data->print_mutex);
 }
 
 static int	check_death(t_data *data, int *i)
@@ -56,17 +43,6 @@ static int	check_death(t_data *data, int *i)
 	}
 	pthread_mutex_unlock(&data->philos[*i].meal_mutex);
 	return (0);
-}
-
-static void	print_death(t_data *data, int i)
-{
-	pthread_mutex_lock(&data->print_mutex);
-	printf("%lld %d died\n", get_time_ms() - data->start_time,
-		data->philos[i].id);
-	pthread_mutex_lock(&data->sim_mutex);
-	data->sim_running = 0;
-	pthread_mutex_unlock(&data->sim_mutex);
-	pthread_mutex_unlock(&data->print_mutex);
 }
 
 static void	check_logic(t_data *data, int *j)
@@ -107,4 +83,23 @@ static int	check_all_full(t_data *data)
 	}
 	pthread_mutex_unlock(&data->sim_mutex);
 	return (0);
+}
+
+void	monitoring(t_data *data)
+{
+	int	i;
+
+	while (1)
+	{
+		i = 0;
+		while (i < data->philo_count)
+		{
+			if (check_death(data, &i))
+				return ;
+			i++;
+		}
+		if (check_all_full(data))
+			return ;
+		usleep(1000);
+	}
 }
