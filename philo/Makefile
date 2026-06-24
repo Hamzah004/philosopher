@@ -53,7 +53,4 @@ fclean: clean
 
 re: fclean all
 
-gdb: $(NAME)
-	gdb -tui ./$(NAME)
-
 .PHONY: all clean fclean re
