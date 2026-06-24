@@ -35,8 +35,7 @@ static t_error	init_forks(t_data *data)
 	i = 0;
 	while (i < data->philo_count)
 	{
-		data->forks[i].id = i;
-		if (pthread_mutex_init(&data->forks[i].fork, NULL))
+		if (pthread_mutex_init(&data->forks[i], NULL))
 			return (MUTEX_INIT_ERROR);
 		i++;
 	}
@@ -71,7 +70,7 @@ t_error	init_data(t_data *data, int argc, char **argv)
 		return (ERROR_INVALID_NUMBER);
 	if (argc == 6 && data->must_eat <= 0)
 		return (ERROR_INVALID_NUMBER);
-	data->forks = malloc(sizeof(t_fork) * data->philo_count);
+	data->forks = malloc(sizeof(pthread_mutex_t) * data->philo_count);
 	if (!data->forks)
 		return (ERROR_MEMORY);
 	data->philos = malloc(sizeof(t_philo) * data->philo_count);

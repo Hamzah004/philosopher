@@ -29,20 +29,14 @@ typedef enum e_error
 	PTHREAD_CREATE_ERROR = 5
 }					t_error;
 
-typedef struct s_fork
-{
-	int				id;
-	pthread_mutex_t	fork;
-}					t_fork;
-
 typedef struct s_philo
 {
 	int				id;
 	long			meal_count;
 	long long		last_meal;
 	pthread_mutex_t	meal_mutex;
-	t_fork			*left_fork;
-	t_fork			*right_fork;
+	pthread_mutex_t	*left_fork;
+	pthread_mutex_t	*right_fork;
 	pthread_t		thread_id;
 	struct s_data	*data;
 }					t_philo;
@@ -58,7 +52,7 @@ typedef struct s_data
 	int				sim_running;
 	pthread_mutex_t	sim_mutex;
 	pthread_mutex_t	print_mutex;
-	t_fork			*forks;
+	pthread_mutex_t	*forks;
 	t_philo			*philos;
 }					t_data;
 

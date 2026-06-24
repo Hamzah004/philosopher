@@ -27,15 +27,15 @@ static void	philo_take_forks(t_philo *philo)
 {
 	if (philo->id % 2 == 0)
 	{
-		pthread_mutex_lock(&philo->right_fork->fork);
+		pthread_mutex_lock(philo->right_fork);
 		print_state(philo->data, philo->id, "has taken a fork");
-		pthread_mutex_lock(&philo->left_fork->fork);
+		pthread_mutex_lock(philo->left_fork);
 	}
 	else
 	{
-		pthread_mutex_lock(&philo->left_fork->fork);
+		pthread_mutex_lock(philo->left_fork);
 		print_state(philo->data, philo->id, "has taken a fork");
-		pthread_mutex_lock(&philo->right_fork->fork);
+		pthread_mutex_lock(philo->right_fork);
 	}
 	print_state(philo->data, philo->id, "has taken a fork");
 }
@@ -57,11 +57,11 @@ void	handle_single_philo(t_philo *philo)
 {
 	if (philo->data->philo_count == 1)
 	{
-		pthread_mutex_lock(&philo->left_fork->fork);
+		pthread_mutex_lock(philo->left_fork);
 		print_state(philo->data, philo->id, "has taken a fork");
 		while (!sim_stop(philo->data))
 			;
-		pthread_mutex_unlock(&philo->left_fork->fork);
+		pthread_mutex_unlock(philo->left_fork);
 		return ;
 	}
 	if (philo->id % 2 == 0)
@@ -81,8 +81,8 @@ void	*routine(void *s)
 		print_state(data, philo->id, "is thinking");
 		philo_take_forks(philo);
 		eating(philo);
-		pthread_mutex_unlock(&philo->right_fork->fork);
-		pthread_mutex_unlock(&philo->left_fork->fork);
+		pthread_mutex_unlock(philo->right_fork);
+		pthread_mutex_unlock(philo->left_fork);
 		print_state(data, philo->id, "is sleeping");
 		better_usleep(data->time_to_sleep, data);
 		usleep(500);

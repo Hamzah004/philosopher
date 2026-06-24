@@ -39,7 +39,7 @@ $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 	@printf "$(OK_COLOR)$(OK_STRING) philo excutable cerated\n$(NO_COLOR)"
 
-%.o : %.c
+%.o : %.c philo.h
 	@$(CC) $(CFLAGS) -c $< -o $@ 
 	@printf "%b" "$(COM_COLOR)$(COM_STRING) $<\n$(NO_COLOR)"
 
